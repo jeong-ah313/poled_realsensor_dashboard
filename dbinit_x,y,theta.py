@@ -5,7 +5,7 @@ db = client.dbPOLED #dbPOLED라고 하는 이름으로 접속 할 것이다.(없
 f = open("emobility/dummy.txt", "r")
 lines = f.readlines()
 
-#표에 넣을 그래프
+# 표에 넣을 데이터
 FileArray = []
 i = 0
 for line in lines:
@@ -26,8 +26,7 @@ for i in range(len(FileArray)):
     db.users.insert_one(doc)
     print(doc)
 
-##그래프에 넣을 데이터
-
+# 그래프에 넣을 데이터
 Dic_Verticle = {}
 Dic_horizion = {}
 Dic_theta = {}
@@ -43,7 +42,7 @@ for line in lines:
 print(Dic_Verticle)
 f.close()
 
-#그래프에 넣을 time&x
+# 그래프에 넣을 데이터 time&x
 for i in Dic_Verticle.keys():
     doc = {
         "Time": i,
@@ -52,7 +51,7 @@ for i in Dic_Verticle.keys():
     db.GRAPH_x.insert_one(doc)
     print(doc)
 
-#그래프에 넣을 time&y
+# 그래프에 넣을 데이터 time&y
 for i in Dic_horizion.keys():
     doc = {
         "Time": i,
@@ -61,7 +60,7 @@ for i in Dic_horizion.keys():
     db.GRAPH_y.insert_one(doc)
     print(doc)
 
-#그래프에 넣을 time&theta
+# 그래프에 넣을 데이터 time&theta
 for i in Dic_theta.keys():
     doc = {
         "Time": i,
