@@ -2,7 +2,7 @@ from pymongo import MongoClient #pymongo접속
 client = MongoClient('localhost', 27017) #지금 내 컴퓨터에 돌아가고 있는 mongodb 접속.
 db = client.dbPOLED #dbPOLED라고 하는 이름으로 접속 할 것이다.(없으면 자동으로 만들어짐)
 
-f = open("./dummy.txt", "r")
+f = open("emobility/dummy.txt", "r")
 lines = f.readlines()
 
 #표에 넣을 그래프
