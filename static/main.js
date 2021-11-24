@@ -1,4 +1,50 @@
-//그래프->x
+// 표 만들기
+$(document).ready(function () {
+    showReview(); //로딩되자마자 불림
+});
+// 표 데이터에 데이터 넣기
+function showReview() {
+    $.ajax({
+        type: "GET",
+        url: "/review",
+        data: {},
+        success: function (response) {
+            let reviews = response['all_reviews']
+            for (let i = 0; i < reviews.length; i++) {
+                let Time = reviews[i]['Time']
+                let verticle = reviews[i]['verticle']
+                let horizion = reviews[i]['horizion']
+                let theta = reviews[i]['theta']
+
+                let temp_html = `<tr>
+                                                <td>${Time}</td>
+                                                <td>${verticle}</td>
+                                                <td>${horizion}</td>
+                                                <td>${theta}</td>
+                                            </tr>
+                        `
+                $('#body').append(temp_html)
+            }
+        }
+    })
+}
+
+// 표 열고 닫기 기능
+function openclose_table() {
+    let status = $('#btn-box').css('display');
+    if (status == 'block') {
+        $('#btn-box').hide()
+        $('#btn-tabulate-box').text('표 열기');
+
+    } else {
+        $('#btn-box').show()
+        $('#btn-tabulate-box').text('표 닫기');
+
+    }
+}
+
+// 그래프그리기
+// 그래프->x
 google.charts.load('current', {'packages': ['corechart']});
 google.charts.setOnLoadCallback(drawChart_x);
 function drawChart_x() {
@@ -48,7 +94,7 @@ function drawChart_x() {
 }
 
 
-//그래프->y
+// 그래프->y
 google.charts.load('current', {'packages': ['corechart']});
 google.charts.setOnLoadCallback(drawChart_y);
 function drawChart_y() {
@@ -145,52 +191,8 @@ function drawChart_theta() {
     })
 }
 
-
-$(document).ready(function () {
-    showReview(); //로딩되자마자 불림
-});
-// 표데이터
-function showReview() {
-    $.ajax({
-        type: "GET",
-        url: "/review",
-        data: {},
-        success: function (response) {
-            let reviews = response['all_reviews']
-            for (let i = 0; i < reviews.length; i++) {
-                let Time = reviews[i]['Time']
-                let verticle = reviews[i]['verticle']
-                let horizion = reviews[i]['horizion']
-                let theta = reviews[i]['theta']
-
-                let temp_html = `<tr>
-                                                <td>${Time}</td>
-                                                <td>${verticle}</td>
-                                                <td>${horizion}</td>
-                                                <td>${theta}</td>
-                                            </tr>
-                        `
-                $('#body').append(temp_html)
-            }
-        }
-    })
-}
-
-// 표 열고 닫기 기능
-function openclose_table() {
-    let status = $('#btn-box').css('display');
-    if (status == 'block') {
-        $('#btn-box').hide()
-        $('#btn-tabulate-box').text('표 열기');
-
-    } else {
-        $('#btn-box').show()
-        $('#btn-tabulate-box').text('표 닫기');
-
-    }
-}
-
-//모든 그래프 보여주기
+// 그래프 보여주기 동적 구현
+// 모든 그래프 보여주기
 function openclose() {
     let status = $('#btn-box1').css('display');
     if (status == 'display') {
@@ -204,7 +206,7 @@ function openclose() {
     }
 }
 
-//그래프x만 보여주기
+// 그래프-x만 보여주기
 function openclose_t() {
     let status = $('#btn-box1').css('display');
     if (status == 'display') {
@@ -216,7 +218,7 @@ function openclose_t() {
     }
 }
 
-// 그래프y만보여주기
+// 그래프-y만 보여주기
 function openclose_s() {
     let status = $('#btn-box2').css('display');
     if (status == 'display') {
@@ -229,7 +231,7 @@ function openclose_s() {
     }
 }
 
-//그래프theta만 보여주기
+// 그래프-theta만 보여주기
 function openclose_a() {
     let status = $('#btn-box3').css('display');
     if (status == 'block') {
