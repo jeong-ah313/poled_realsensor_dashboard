@@ -1,0 +1,12 @@
+.box {
+    margin: 10px 20px 30px 100px;
+}
+
+.section1 {
+    float: left;
+    width: 100%;
+    height: 600px;
+    /*background-color: mediumvioletred;*/
+}
+
+
