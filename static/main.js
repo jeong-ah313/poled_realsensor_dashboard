@@ -1,9 +1,9 @@
 // 표 만들기
 $(document).ready(function () {
-    showReview(); //로딩되자마자 불림
+    showTabulateData(); //로딩되자마자 불림
 });
 // 표 데이터에 데이터 넣기
-function showReview() {
+function showTabulateData() {
     $.ajax({
         type: "GET",
         url: "/TABULATE",
@@ -12,14 +12,14 @@ function showReview() {
             let db_data = response['all_data']
             for (let i = 0; i < db_data.length; i++) {
                 let Time = db_data[i]['Time']
-                let verticle = db_data[i]['verticle']
-                let horizion = db_data[i]['horizion']
+                let vertical = db_data[i]['vertical']
+                let Horizontal = db_data[i]['Horizontal']
                 let theta = db_data[i]['theta']
 
                 let temp_html = `<tr>
                                                 <td>${Time}</td>
-                                                <td>${verticle}</td>
-                                                <td>${horizion}</td>
+                                                <td>${vertical}</td>
+                                                <td>${Horizontal}</td>
                                                 <td>${theta}</td>
                                             </tr>
                         `

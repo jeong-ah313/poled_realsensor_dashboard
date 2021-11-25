@@ -10,8 +10,8 @@ FileArray = []
 i = 0
 for line in lines:
     if i == len(lines): break
-    t,verticle,horizion,theta = line.split()
-    FileArray += [[t,verticle,horizion,theta]]
+    t, vertical, Horizontal, theta = line.split()
+    FileArray += [[t, vertical, Horizontal, theta]]
     i += 1
 f.close()
 
@@ -19,43 +19,43 @@ for i in range(len(FileArray)):
 
     doc = {
         "Time": FileArray[i][0],
-        "verticle": FileArray[i][1],
-        "horizion": FileArray[i][2],
+        "vertical": FileArray[i][1],
+        "Horizontal": FileArray[i][2],
         "theta": FileArray[i][3]
     }
     db.users.insert_one(doc)
     print(doc)
 
 # 그래프에 넣을 데이터
-Dic_Verticle = {}
-Dic_horizion = {}
+Dic_Vertical = {}
+Dic_Horizontal = {}
 Dic_theta = {}
 
 i = 0
 for line in lines:
     if i == len(lines): break
-    t, verticle, horizion, theta = line.split()
-    Dic_Verticle[t] = int(verticle)
-    Dic_horizion[t] = int(horizion)
+    t, vertical, Horizontal, theta = line.split()
+    Dic_Vertical[t] = int(vertical)
+    Dic_Horizontal[t] = int(Horizontal)
     Dic_theta[t] = int(theta)
     i += 1
-print(Dic_Verticle)
+print(Dic_Vertical)
 f.close()
 
 # 그래프에 넣을 데이터 time&x
-for i in Dic_Verticle.keys():
+for i in Dic_Vertical.keys():
     doc = {
         "Time": i,
-        "Vertical": Dic_Verticle[i]
+        "Vertical": Dic_Vertical[i]
     }
     db.GRAPH_x.insert_one(doc)
     print(doc)
 
 # 그래프에 넣을 데이터 time&y
-for i in Dic_horizion.keys():
+for i in Dic_Horizontal.keys():
     doc = {
         "Time": i,
-        "Horizontal": Dic_horizion[i]
+        "Horizontal": Dic_Horizontal[i]
     }
     db.GRAPH_y.insert_one(doc)
     print(doc)
