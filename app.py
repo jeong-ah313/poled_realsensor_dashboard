@@ -15,28 +15,28 @@ def homework():
 
 ####################
 #DB불러오기-표
-@app.route('/review', methods=['GET'])
+@app.route('/TABULATE', methods=['GET'])
 def read_reviews():
-    reviews = list(db.users.find({}, {'_id': False}))
-    return jsonify({'all_reviews': reviews})
+    data = list(db.users.find({}, {'_id': False}))
+    return jsonify({'all_data': data})
 
 #DB불러오기-그래프x,y,theta
-@app.route('/review_X', methods=['GET'])
+@app.route('/GRAPH_X', methods=['GET'])
 def read_reviews_X():
-    reviews = list(db.GRAPH_x.find({}, {'_id': False}))
-    return jsonify({'all_X': reviews})
+    data = list(db.GRAPH_x.find({}, {'_id': False}))
+    return jsonify({'all_X': data})
 
 #DB불러오기-그래프y
-@app.route('/review_Y', methods=['GET'])
+@app.route('/GRAPH_Y', methods=['GET'])
 def read_reviews_Y():
-    reviews = list(db.GRAPH_y.find({}, {'_id': False}))
-    return jsonify({'all_Y': reviews})
+    data = list(db.GRAPH_y.find({}, {'_id': False}))
+    return jsonify({'all_Y': data})
 
 #DB불러오기-그래프theta
-@app.route('/review_theta', methods=['GET'])
+@app.route('/GRAPH_theta', methods=['GET'])
 def read_reviews_Theta():
-    reviews = list(db.GRAPH_theta.find({}, {'_id': False}))
-    return jsonify({'all_theta': reviews})
+    data = list(db.GRAPH_theta.find({}, {'_id': False}))
+    return jsonify({'all_theta': data})
 
 
 

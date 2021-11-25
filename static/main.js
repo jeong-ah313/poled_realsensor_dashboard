@@ -6,15 +6,15 @@ $(document).ready(function () {
 function showReview() {
     $.ajax({
         type: "GET",
-        url: "/review",
+        url: "/TABULATE",
         data: {},
         success: function (response) {
-            let reviews = response['all_reviews']
-            for (let i = 0; i < reviews.length; i++) {
-                let Time = reviews[i]['Time']
-                let verticle = reviews[i]['verticle']
-                let horizion = reviews[i]['horizion']
-                let theta = reviews[i]['theta']
+            let db_data = response['all_data']
+            for (let i = 0; i < db_data.length; i++) {
+                let Time = db_data[i]['Time']
+                let verticle = db_data[i]['verticle']
+                let horizion = db_data[i]['horizion']
+                let theta = db_data[i]['theta']
 
                 let temp_html = `<tr>
                                                 <td>${Time}</td>
@@ -50,16 +50,16 @@ google.charts.setOnLoadCallback(drawChart_x);
 function drawChart_x() {
     $.ajax({
         type: "GET",
-        url: "/review_X",
+        url: "/GRAPH_X",
         data: {},
         success: function (response) {
-            let reviews = response['all_X']
+            let db_data = response['all_X']
             let X = [] //안쪽 t, v가 들어갈 배열
             let Z = [] //가장 바깥 배열
             Z.push(['Time', 'Vertical'])
             for (let i = 0; i < 30; i++) {
-                let Time = reviews[i]['Time']
-                let Vertical = reviews[i]['Vertical']
+                let Time = db_data[i]['Time']
+                let Vertical = db_data[i]['Vertical']
                 X = []
                 X.push(Time)
                 X.push(Vertical)
@@ -100,16 +100,16 @@ google.charts.setOnLoadCallback(drawChart_y);
 function drawChart_y() {
     $.ajax({
         type: "GET",
-        url: "/review_Y",
+        url: "/GRAPH_Y",
         data: {},
         success: function (response) {
-            let reviews = response['all_Y']
+            let db_data = response['all_Y']
             let X = [] //안쪽 t, v가 들어갈 배열
             let Z = [] //가장 바깥 배열
             Z.push(['Time', 'Horizontal'])
             for (let i = 0; i < 30; i++) {
-                let Time = reviews[i]['Time']
-                let Horizontal = reviews[i]['Horizontal']
+                let Time = db_data[i]['Time']
+                let Horizontal = db_data[i]['Horizontal']
                 X = []
                 X.push(Time)
                 X.push(Horizontal)
@@ -149,16 +149,16 @@ google.charts.setOnLoadCallback(drawChart_theta);
 function drawChart_theta() {
     $.ajax({
         type: "GET",
-        url: "/review_theta",
+        url: "/GRAPH_theta",
         data: {},
         success: function (response) {
-            let reviews = response['all_theta']
+            let db_data = response['all_theta']
             let X = [] //안쪽 t, v가 들어갈 배열
             let Z = [] //가장 바깥 배열
             Z.push(['Time', 'Theta'])
             for (let i = 0; i < 30; i++) {
-                let Time = reviews[i]['Time']
-                let Theta = reviews[i]['Theta']
+                let Time = db_data[i]['Time']
+                let Theta = db_data[i]['Theta']
                 X = []
                 X.push(Time)
                 X.push(Theta)
