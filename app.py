@@ -16,25 +16,25 @@ def homework():
 ####################
 #DB불러오기-표
 @app.route('/TABULATE', methods=['GET'])
-def read_reviews():
+def read_data():
     data = list(db.users.find({}, {'_id': False}))
     return jsonify({'all_data': data})
 
 #DB불러오기-그래프x,y,theta
 @app.route('/GRAPH_X', methods=['GET'])
-def read_reviews_X():
+def read_data_X():
     data = list(db.GRAPH_x.find({}, {'_id': False}))
     return jsonify({'all_X': data})
 
 #DB불러오기-그래프y
 @app.route('/GRAPH_Y', methods=['GET'])
-def read_reviews_Y():
+def read_data_Y():
     data = list(db.GRAPH_y.find({}, {'_id': False}))
     return jsonify({'all_Y': data})
 
 #DB불러오기-그래프theta
 @app.route('/GRAPH_theta', methods=['GET'])
-def read_reviews_Theta():
+def read_data_Theta():
     data = list(db.GRAPH_theta.find({}, {'_id': False}))
     return jsonify({'all_theta': data})
 
